@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MidnightSun: Windows için düşük gecikmeli oyun yayını</title>
+<meta name="description" content="NVIDIA ekran kartlı Windows PC'nizdeki oyunu evdeki başka bir bilgisayardan oynayın. Tek uygulama, IP yazmadan eşleşme, yayıncı onayı, isteğe bağlı AES-256-GCM. Ücretsiz ve açık kaynak.">
+<meta name="theme-color" content="#0f1424">
+<meta property="og:type" content="website">
+<meta property="og:title" content="MidnightSun: bir tık yayınla, bir tık bağlan">
+<meta property="og:description" content="Windows için düşük gecikmeli, açık kaynak oyun yayını: NVENC, özel UDP protokolü (GSMR), Opus ses, klavye/fare/oyun kolu geri kanalı.">
+<meta property="og:image" content="https://ozcinax-star.github.io/MidnightSun/assets/og.png">
+<meta property="og:url" content="https://ozcinax-star.github.io/MidnightSun/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preload" href="fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+<script>
+  document.documentElement.classList.add('js');
+  setTimeout(function () {
+    if (!document.documentElement.classList.contains('motion-ready'))
+      document.documentElement.classList.remove('js');
+  }, 3000);
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"MidnightSun","operatingSystem":"Windows 10, Windows 11 (x64)","applicationCategory":"GameApplication","softwareVersion":"1.0.0","license":"https://opensource.org/licenses/MIT","offers":{"@type":"Offer","price":"0","priceCurrency":"TRY"},"downloadUrl":"https://github.com/ozcinax-star/MidnightSun/releases/latest/download/MidnightSun-Kurulum.exe","url":"https://ozcinax-star.github.io/MidnightSun/"}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">İçeriğe geç</a>
+
+<header class="top">
+  <a class="brand" href="./" aria-label="MidnightSun ana sayfa">
+    <img src="assets/icon-256.png" width="34" height="34" alt="">
+    <span>MidnightSun</span>
+  </a>
+  <nav class="nav" aria-label="Bölümler">
+    <a href="#adimlar">Nasıl çalışır</a>
+    <a href="#yolculuk">Yolculuk</a>
+    <a href="#ozellikler">Özellikler</a>
+    <a href="#gereksinimler">Gereksinimler</a>
+    <a href="https://github.com/ozcinax-star/MidnightSun">GitHub</a>
+  </nav>
+  <a class="top-cta" href="#indir">İndir</a>
+</header>
+
+<main id="main">
+
+  <!-- 1. HERO -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-copy wrap">
+      <h1 id="hero-title">Bir tık yayınla, bir tık&nbsp;bağlan.</h1>
+      <p class="hero-sub">MidnightSun, NVIDIA ekran kartlı Windows PC'nizdeki oyunu evdeki başka bir bilgisayardan düşük gecikmeyle oynatır. IP yazmak yok, hesap yok, bulut yok.</p>
+      <div class="hero-act">
+        <a class="btn" href="https://github.com/ozcinax-star/MidnightSun/releases/latest/download/MidnightSun-Kurulum.exe">
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M11 3h2v10.17l3.59-3.58L18 11l-6 6-6-6 1.41-1.41L11 13.17z"/><path fill="currentColor" d="M5 19h14v2H5z"/></svg>
+          Windows için indir
+        </a>
+        <p class="hero-meta">Sürüm 1.0.0 · Windows 10/11 x64 · ücretsiz, açık kaynak (MIT) · <a href="https://github.com/ozcinax-star/MidnightSun/releases/latest/download/MidnightSun-Portable.zip">taşınabilir zip</a></p>
+      </div>
+    </div>
+    <div class="horizon" aria-hidden="true"></div>
+    <figure class="hero-stage">
+      <img class="hero-win" src="assets/launcher-devices.png" width="640" height="600" alt="MidnightSun açılış ekranı: Bu bilgisayarı yayınla kartı, kayıtlı cihazlar listesi ve eşleşme kodu alanı">
+      <figcaption>Gerçek açılış ekranı. Listedeki kayıtlı cihaz örnek veridir.</figcaption>
+    </figure>
+  </section>
+
+  <!-- 2. STEPS -->
+  <section class="steps" id="adimlar" aria-labelledby="steps-title">
+    <div class="wrap">
+      <header class="sec-head">
+        <h2 id="steps-title">Üç adım. Ayar dosyası&nbsp;yok.</h2>
+        <p>Aynı <code>MidnightSun.exe</code> hem yayıncı hem izleyici. Rolü her oturumda açılış ekranından seçersiniz.</p>
+      </header>
+      <ol class="step-list">
+        <li class="step" data-reveal>
+          <span class="mark" aria-hidden="true"><i></i></span>
+          <div class="step-text">
+            <h3><span class="sr-only">1. </span>Yayıncı PC'de: “Bu bilgisayarı yayınla”</h3>
+            <p>Oyun bilgisayarında MidnightSun'ı açıp karta tıklayın. Açılan durum penceresinde eşleşme kodu görünür; tıklayınca kopyalanır.</p>
+          </div>
+          <img class="shot" src="assets/crop-host.png" width="608" height="76" alt="Açılış ekranındaki Bu bilgisayarı yayınla kartı" loading="lazy">
+        </li>
+        <li class="step" data-reveal>
+          <span class="mark" aria-hidden="true"><i></i><i></i></span>
+          <div class="step-text">
+            <h3><span class="sr-only">2. </span>İzleyici PC'de: listede tıklayın</h3>
+            <p>Aynı ağdaysanız yayın listede kendiliğinden belirir. Farklı bir ağ segmentindeyseniz <code>XXXX-XXXX-XXXX</code> kodunu girip Bağlan'a basın.</p>
+          </div>
+          <div class="shot-pair">
+            <img class="shot" src="assets/crop-devices.png" width="608" height="86" alt="Cihazlar listesi: kayıtlı bir cihaz satırı" loading="lazy">
+            <img class="shot" src="assets/crop-code.png" width="608" height="90" alt="Eşleşme kodu veya IP adresi alanı ve Bağlan düğmesi" loading="lazy">
+          </div>
+        </li>
+        <li class="step" data-reveal>
+          <span class="mark" aria-hidden="true"><i></i><i></i><i></i></span>
+          <div class="step-text">
+            <h3><span class="sr-only">3. </span>Yayıncı onaylar, oyun başlar</h3>
+            <p>Yayıncı tarafta “bu yayını izlemek istiyor” istemi çıkar: <strong>İzin ver</strong> ya da <strong>Reddet</strong>. Kimin izleyeceğine siz karar verirsiniz.</p>
+          </div>
+          <dl class="keys">
+            <div><dt><kbd>F1</kbd></dt><dd>istatistik katmanı</dd></div>
+            <div><dt><kbd>F2</kbd></dt><dd>fare modu: masaüstü / oyun</dd></div>
+            <div><dt><kbd>Shift</kbd>+<kbd>Esc</kbd></dt><dd>oturumdan çık</dd></div>
+          </dl>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 3. SCROLL SCENE -->
+  <section class="journey" id="yolculuk" aria-labelledby="journey-title">
+    <header class="wrap journey-head">
+      <h2 id="journey-title">Bir karenin yolculuğu</h2>
+      <p class="journey-lead">Görüntü GPU belleğinden hiç çıkmadan sıkıştırılır ve oyun yayını için yazılmış bir UDP protokolüyle karşıya akar. Kaynak kodda adım adım:</p>
+    </header>
+    <div class="journey-track">
+    <div class="journey-pin">
+      <div class="wrap journey-grid">
+        <div class="journey-copy">
+          <ol class="stages">
+            <li data-stage="1"><h3>Yakala</h3><p>DXGI Desktop Duplication masaüstünü GPU dokusu olarak alır; üçlü tampon, işlemciye kopya yok.</p><code>ScreenCapture.cpp</code></li>
+            <li data-stage="2"><h3>Sıkıştır</h3><p>NVENC H.264 dokuyu doğrudan VRAM'den okur. Tek karelik VBV, intra-refresh, uyarlanabilir bit hızı.</p><code>NvencEncoder.cpp</code></li>
+            <li data-stage="3"><h3>Gönder</h3><p>GSMR: en fazla 1400 baytlık UDP paketleri. Paket kaybolursa izleyici anahtar kare ister, görüntü kendini onarır.</p><code>StreamSender.cpp · NetworkProtocol.h</code></li>
+            <li data-stage="4"><h3>Göster</h3><p>İzleyici parçaları birleştirir, donanımla çözer (D3D11VA) ve kenarlıksız tam ekranda gösterir.</p><code>StreamReceiver.cpp · VideoDecoder.cpp</code></li>
+            <li data-stage="5"><h3>Geri kanal</h3><p>Klavye, fare ve oyun kolu saniyede 120 kez yayıncıya döner; ses Opus ile 20&nbsp;ms'lik dilimlerle ileri akar.</p><code>InputCapture.cpp · AudioCapture.cpp</code></li>
+          </ol>
+        </div>
+        <div class="viz" data-stage="all" aria-hidden="true">
+          <div class="pc pc-host"><span>Yayıncı PC</span></div>
+          <div class="pc pc-view"><span>İzleyici PC</span></div>
+          <div class="lane lane-video"></div>
+          <div class="slices">
+            <i style="--n:0"></i><i style="--n:1"></i><i style="--n:2"></i><i style="--n:3"></i>
+            <i style="--n:4"></i><i style="--n:5"></i><i style="--n:6"></i><i style="--n:7"></i>
+          </div>
+          <div class="tag tag-vram">VRAM</div>
+          <div class="tag tag-h264">H.264</div>
+          <div class="tag tag-udp">UDP · ≤1400 B</div>
+          <div class="back">
+            <span class="back-label back-in">giriş · 120 Hz ←</span>
+            <span class="back-label back-audio">ses · Opus 20 ms →</span>
+            <b class="pk pk-in" style="--k:0"></b><b class="pk pk-in" style="--k:1"></b><b class="pk pk-in" style="--k:2"></b>
+            <b class="pk pk-au" style="--k:0"></b><b class="pk pk-au" style="--k:1"></b><b class="pk pk-au" style="--k:2"></b>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- 4. FEATURES -->
+  <section class="features" id="ozellikler" aria-labelledby="features-title">
+    <div class="wrap feat-grid">
+      <figure class="feat-shot" data-reveal>
+        <img src="assets/launcher-settings.png" width="640" height="600" alt="MidnightSun ayarlar ekranı: en yüksek bit hızı, kodlama çözünürlüğü, FPS hedefi, bağlantı portu, şifre (PSK) ve bağlantı onayı" loading="lazy">
+        <figcaption>Ayarlar ekranı, sağ üstteki dişliden. Gerçek ekran görüntüsü.</figcaption>
+      </figure>
+      <div class="feat-copy">
+        <h2 id="features-title">Kontrol sizde, karmaşa&nbsp;yok.</h2>
+        <ul class="feat-list">
+          <li data-reveal><h3>Sıfır kurulum eşleşme</h3><p>Aynı ağda otomatik keşif. Uzaktakiler için tek satırlık kod: IPv4 adresi, port ve sağlama baytı, <code>XXXX-XXXX-XXXX</code> biçiminde.</p></li>
+          <li data-reveal><h3>Kapıda onay, isteğe bağlı şifre</h3><p>Yeni izleyiciyi yayıncı onaylar. İki uca aynı şifre (PSK) girilirse tüm trafik AES-256-GCM ile şifrelenir ve doğrulanır.</p></li>
+          <li data-reveal><h3>Tam oyun hissi</h3><p>256 tuşlu klavye, 5 tuşlu fare, mutlak ve göreli fare modu. XInput oyun kolu yayıncıda sanal Xbox 360 kolu olarak görünür (ViGEmBus ile).</p></li>
+          <li data-reveal><h3>Kendini onaran görüntü</h3><p>Kayıpta anahtar kare, sessiz bozulmaya karşı intra-refresh. Ağ daralınca bit hızı iner, düzelince yeniden çıkar.</p></li>
+          <li data-reveal><h3>Ayarlar uygulamanın içinde</h3><p>Bit hızı, çözünürlük, FPS, port, şifre ve onay tek ekranda. JSON dosyası açmanız gerekmez.</p></li>
+          <li data-reveal><h3>Hesap yok, bulut yok</h3><p>Yayın yalnızca seçtiğiniz cihaza akar; aracı sunucu ve telemetri yoktur. Yayın penceresi sistem tepsisine küçülür.</p></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. REQUIREMENTS + STATUS -->
+  <section class="reqs" id="gereksinimler" aria-labelledby="reqs-title">
+    <div class="wrap">
+      <header class="sec-head">
+        <h2 id="reqs-title">Neye ihtiyacınız var?</h2>
+        <p>Yayını NVIDIA ekran kartı üretir; izleyen taraf için H.264 çözebilen herhangi bir GPU yeterli.</p>
+      </header>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Sistem gereksinimleri tablosu">
+        <table class="req-table">
+          <thead><tr><th scope="col"><span class="sr-only">Gereksinim</span></th><th scope="col">Yayıncı PC</th><th scope="col">İzleyici PC</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">İşletim sistemi</th><td data-label="Yayıncı">Windows 10/11 x64</td><td data-label="İzleyici">Windows 10/11 x64</td></tr>
+            <tr><th scope="row">Ekran kartı</th><td data-label="Yayıncı">NVENC destekli NVIDIA (GTX 10xx ve üzeri), sürücü 522.25 veya yenisi</td><td data-label="İzleyici">H.264 çözebilen herhangi bir GPU</td></tr>
+            <tr><th scope="row">Ağ</th><td data-label="Yayıncı">Gigabit kablolu ağ veya Wi-Fi 5 ve üzeri önerilir</td><td data-label="İzleyici">Aynı</td></tr>
+            <tr><th scope="row">İsteğe bağlı</th><td data-label="Yayıncı"><a href="https://github.com/nefarius/ViGEmBus/releases">ViGEmBus</a> sürücüsü (oyun kolu için)</td><td data-label="İzleyici">gerekmez</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="status">
+        <div>
+          <h3>Bilinen sınırlar</h3>
+          <ul>
+            <li>Yalnızca IPv4; NAT geçişi yok. Ev ağı, VPN (Tailscale, WireGuard vb.) veya port yönlendirme gerekir.</li>
+            <li>Döndürülmüş monitörler ve yayıncıda birincil olmayan ekranlar henüz desteklenmiyor.</li>
+            <li>Yalnızca ilk oyun kolu aktarılır.</li>
+            <li>PSK statiktir: ev ağı için uygun; internet üzerinden VPN önerilir.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Durum</h3>
+          <p>Sürüm 1.0.0. Bu paket hazırlanırken kaynak koddan temiz derleme ve uygulamanın açılışı doğrulandı. Gecikme ölçümü yayımlanmadı: sonuç ağınıza ve donanımınıza bağlıdır. Ayrıntılar <a href="https://github.com/ozcinax-star/MidnightSun#durum">README'de</a>; sorunları <a href="https://github.com/ozcinax-star/MidnightSun/issues">GitHub Issues</a>'a yazabilirsiniz.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. DOWNLOAD -->
+  <section class="download" id="indir" aria-labelledby="dl-title">
+    <div class="dl-top">
+      <div class="wrap"><h2 id="dl-title">Oyunun orada. Sen neredeysen orada&nbsp;oyna.</h2></div>
+      <div class="dl-sun" aria-hidden="true"></div>
+    </div>
+    <div class="wrap dl-inner">
+      <div class="dl-options">
+        <article class="dl-opt dl-main">
+          <p class="dl-kind">Kurulum paketi · önerilen</p>
+          <h3>MidnightSun-Kurulum.exe</h3>
+          <p>Başlat menüsü kısayolu, güvenlik duvarında uygulamaya özel izin (özel ağlar) ve kaldırıcı. Ayarlarınız güncellemede korunur.</p>
+          <a class="btn" href="https://github.com/ozcinax-star/MidnightSun/releases/latest/download/MidnightSun-Kurulum.exe">Kurulum paketini indir</a>
+        </article>
+        <article class="dl-opt">
+          <p class="dl-kind">Taşınabilir</p>
+          <h3>MidnightSun-Portable.zip</h3>
+          <p>Yazılabilir bir klasöre çıkarın ve <code>MidnightSun.exe</code>'yi çalıştırın. Visual C++ çalışma zamanı pakette; ayarlar aynı klasörde durur.</p>
+          <a class="btn btn-quiet" href="https://github.com/ozcinax-star/MidnightSun/releases/latest/download/MidnightSun-Portable.zip">Zip'i indir</a>
+        </article>
+      </div>
+      <ul class="dl-notes">
+        <li><strong>SmartScreen uyarısı normaldir:</strong> uygulama kod imzalı değil. “Ek bilgi” → “Yine de çalıştır”.</li>
+        <li><strong>Doğrulama:</strong> SHA-256 özetleri <a href="https://github.com/ozcinax-star/MidnightSun/releases/latest">sürüm notlarında</a>.</li>
+        <li><strong>Kaynak kodu:</strong> <a href="https://github.com/ozcinax-star/MidnightSun">github.com/ozcinax-star/MidnightSun</a>, Visual Studio 2022 ile <code>build_all.bat</code>.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 7. FAQ -->
+  <section class="faq" id="sss" aria-labelledby="faq-title">
+    <div class="wrap faq-grid">
+      <h2 id="faq-title">Sık sorulanlar</h2>
+      <div class="faq-list">
+        <details>
+          <summary>İnternet üzerinden çalışır mı?</summary>
+          <p>Aynı ağda, VPN (Tailscale, WireGuard vb.) üzerinden veya port yönlendirmesiyle çalışır. Aracı sunucu yoktur; eşleşme kodu yalnızca bir adres taşır, veriniz üçüncü bir tarafa uğramaz.</p>
+        </details>
+        <details>
+          <summary>Hangi ekran kartları destekleniyor?</summary>
+          <p>Yayıncıda NVENC destekli bir NVIDIA kartı (GTX 10 serisi ve üzeri, sürücü 522.25 veya yenisi). İzleyici tarafında H.264 çözebilen herhangi bir GPU.</p>
+        </details>
+        <details>
+          <summary>Ücretli mi?</summary>
+          <p>Hayır. MidnightSun ücretsizdir; kendi kaynak kodu MIT lisanslıdır. İçindeki Opus ve ViGEmClient kendi lisanslarıyla gelir.</p>
+        </details>
+        <details>
+          <summary>Verilerim güvende mi?</summary>
+          <p>Yayın yalnızca onayladığınız cihaza akar. İki uca aynı şifreyi girerseniz trafik AES-256-GCM ile şifrelenir. Hesap, telemetri ve bulut yoktur. Şifre statik olduğundan internet üzerinden kullanımda VPN önerilir.</p>
+        </details>
+        <details>
+          <summary>Oyun kolu neden çalışmıyor?</summary>
+          <p>Kol girişini yayıncıya aktarmak için yayıncı PC'de <a href="https://github.com/nefarius/ViGEmBus/releases">ViGEmBus</a> sürücüsü kurulu olmalı. Sürücü yoksa uygulama klavye ve fareyle devam eder.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <img src="assets/icon-256.png" width="44" height="44" alt="" loading="lazy">
+      <p><strong>MidnightSun</strong><br>Windows için düşük gecikmeli, açık kaynak oyun yayını.</p>
+    </div>
+    <nav class="foot-links" aria-label="Bağlantılar">
+      <a href="https://github.com/ozcinax-star/MidnightSun">Kaynak kodu</a>
+      <a href="https://github.com/ozcinax-star/MidnightSun/releases">Tüm sürümler</a>
+      <a href="https://github.com/ozcinax-star/MidnightSun/blob/main/docs/ARCHITECTURE.md">Mimari notları</a>
+      <a href="https://github.com/ozcinax-star/MidnightSun/blob/main/LICENSE">Lisans (MIT)</a>
+      <a href="https://github.com/ozcinax-star/MidnightSun/blob/main/THIRD_PARTY_NOTICES.txt">Üçüncü taraf bileşenler</a>
+    </nav>
+    <p class="foot-legal">NVIDIA, NVENC, Windows ve Xbox ilgili sahiplerinin ticari markalarıdır; MidnightSun bu şirketlerle bağlantılı değildir. Bu site çerez ve izleme kodu kullanmaz.</p>
+  </div>
+</footer>
+
+<a class="dock" href="#indir">MidnightSun'ı indir</a>
+
+<script src="main.js" defer></script>
+</body>
+</html>

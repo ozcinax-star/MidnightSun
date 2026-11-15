@@ -1,0 +1,49 @@
+# Builds the Inno Setup installer from the portable zip that is attached to a
+# release, so the installer and the zip carry the exact same MidnightSun.exe,
+# and uploads MidnightSun-Kurulum.exe to that release.
+name: Installer
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag (e.g. v1.0.0)'
+        required: true
+  release:
+    types: [published]
+permissions:
+  contents: write
+jobs:
+  installer:
+    runs-on: windows-latest
+    env:
+      TAG: ${{ github.event.inputs.tag || github.event.release.tag_name }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.tag || github.event.release.tag_name }}
+      - name: Download portable zip from the release
+        shell: pwsh
+        run: |
+          gh release download $env:TAG --repo $env:GITHUB_REPOSITORY --pattern MidnightSun-Portable.zip --dir dl
+          Expand-Archive dl\MidnightSun-Portable.zip -DestinationPath dist
+          Get-ChildItem dist\MidnightSun
+      - name: Find or install Inno Setup 6
+        shell: pwsh
+        run: |
+          $iscc = @("${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe", "$env:ProgramFiles\Inno Setup 6\ISCC.exe") | Where-Object { Test-Path $_ } | Select-Object -First 1
+          if (-not $iscc) {
+            choco install innosetup --no-progress -y | Out-Host
+            $iscc = @("${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe", "$env:ProgramFiles\Inno Setup 6\ISCC.exe") | Where-Object { Test-Path $_ } | Select-Object -First 1
+          }
+          if (-not $iscc) { throw 'ISCC.exe not found' }
+          "ISCC=$iscc" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+      - name: Compile installer
+        shell: pwsh
+        run: |
+          & $env:ISCC /DSrcDir=dist\MidnightSun installer.iss
+          if ($LASTEXITCODE -ne 0) { throw "ISCC failed: $LASTEXITCODE" }
+          Get-FileHash Output\MidnightSun-Kurulum.exe -Algorithm SHA256 | Format-List
+      - name: Upload installer to the release
+        shell: pwsh
+        run: gh release upload $env:TAG Output\MidnightSun-Kurulum.exe --repo $env:GITHUB_REPOSITORY --clobber

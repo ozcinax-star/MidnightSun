@@ -1,0 +1,13 @@
+{
+    "port": 9000,
+    "bitrate_kbps": 20000,
+    "fps_target": 60,
+    "encode_height": 1080,
+    "require_approval": 1,
+    "psk": "",
+    "server_ip": "",
+    "server_port": 9000,
+    "saved_devices": [],
+    "latency_csv": "",
+    "show_console": 0
+}
